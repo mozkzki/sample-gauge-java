@@ -45,6 +45,9 @@ jobs:
         run: |
           mkdir public
           cp -r reports/html-report docs
+        run: |
+          cd docs
+          ls -al
 
       # - name: Deploy report page
       #   uses: peaceiris/actions-gh-pages@v3
