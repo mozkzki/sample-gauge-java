@@ -1,0 +1,12 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  check-hoge-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "this is test."
+      - uses: actions/checkout@v3
+      - run: |
+          ls -al
+          cd .github/workflows/
+          ls -al
