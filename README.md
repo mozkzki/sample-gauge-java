@@ -28,6 +28,11 @@ GitHub Actionsでのテスト実施、テストレポート公開(GitHub Pages)�
   - <https://mozkzki.github.io/sample-gauge-java/specs/example.html>
 - GitHub側でPagesを有効化（Source: GitHub Actions）する必要あり
 
+### シナリオやステップの記載について
+
+下記の例がイメージしやすい。
+<https://speakerdeck.com/hgsgtk/atdd-by-genba-example?slide=47>
+
 ## 参考
 
 - [簡単！自動化テストツール「Gauge」の導入からテスト実行まで ｜SHIFT Group 技術ブログ｜note](https://note.com/shift_tech/n/n8cfe237382a4)
