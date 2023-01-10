@@ -19,3 +19,7 @@ jobs:
       - run: gauge install java --version 0.9.1
       - run: gauge version
       - run: gauge run specs
+      - uses: actions/upload-artifact@v3
+        with:
+          name: gauge-test-report
+          path: reports/html-report
