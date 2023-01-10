@@ -24,23 +24,23 @@ jobs:
   execute-gauge-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          echo "this is gauge test."
-          ls -al
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # setup java
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
           java-version: '11'
+
+      - name: Verify Java
         run: java --version
 
-      # setup gauge
-      - run: curl -SsL https://downloads.gauge.org/stable | sh
-      - run: gauge install java --version 0.9.1
-      - run: gauge version
+      - name: Setup & Verify Gauge
+      - run: |
+        curl -SsL https://downloads.gauge.org/stable | sh
+        gauge install java --version 0.9.1
+        gauge version
 
       - name: Run Test
         run: gauge run specs
@@ -57,6 +57,8 @@ jobs:
       #     cp -r reports/html-report docs
       #     cd docs
       #     ls -al
+
+      # 以降はテスト結果レポートをGitHub Pagesにデプロイするための準備
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
