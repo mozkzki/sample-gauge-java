@@ -45,7 +45,6 @@ jobs:
         run: |
           mkdir public
           cp -r reports/html-report docs
-        run: |
           cd docs
           ls -al
 
