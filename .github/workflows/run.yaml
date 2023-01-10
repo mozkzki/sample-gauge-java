@@ -16,5 +16,6 @@ jobs:
           ls -al
       - run: java --version
       - run: curl -SsL https://downloads.gauge.org/stable | sh
-      - run: gauge install java --version 0.7.15
+      - run: gauge install java --version 0.9.1
       - run: gauge version
+      - run: gauge run specs
