@@ -35,7 +35,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-      - run: java --version
+        run: java --version
 
       # setup gauge
       - run: curl -SsL https://downloads.gauge.org/stable | sh
@@ -58,11 +58,6 @@ jobs:
       #     cd docs
       #     ls -al
 
-  # Build Report Job
-  build-report:
-    runs-on: ubuntu-latest
-    needs: execute-gauge-test
-    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
@@ -73,13 +68,29 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
+  # Build Report Job
+  # build-report:
+  #   runs-on: ubuntu-latest
+  #   needs: execute-gauge-test
+  #   steps:
+  #     - name: Setup Pages
+  #       uses: actions/configure-pages@v2
+  #     - name: Build with Jekyll
+  #       uses: actions/jekyll-build-pages@v1
+  #       with:
+  #         source: ./reports/html-report
+  #         destination: ./_site
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v1
+
   # Deployment Report Job
   deploy-report:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build-report
+    needs: execute-gauge-test
+    # needs: build-report
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
